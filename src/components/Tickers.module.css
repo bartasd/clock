@@ -13,11 +13,9 @@
     z-index: 1;
 }
 .minuteCont{
-    transform: rotate(45deg);
     z-index: 2;
 }
 .secondCont{
-    transform: rotate(75deg);
     z-index: 0;
 }
 
@@ -34,7 +32,6 @@
     width: 50%;
     height: calc(100% - 2vw);
     border-radius: 1vw;
-
 }
 
 .second{
