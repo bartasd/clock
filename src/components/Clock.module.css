@@ -1,0 +1,18 @@
+.clockPerimeter{
+    background-color: white;
+    width: 40vw;
+    height: calc(40vw);
+    border-radius: calc(20vw);
+    border: calc(4vw) solid black;
+    position: relative;
+}
+
+.clockDot{
+    position: absolute;
+    width: 4vw;
+    height: calc(4vw);
+    background-color: black;
+    left: calc(50% - 2vw);
+    top: calc(50% - calc(2vw));
+    border-radius: 2vw;
+}

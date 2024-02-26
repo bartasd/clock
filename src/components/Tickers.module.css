@@ -1,0 +1,46 @@
+.tickerCont{
+    background: transparent;
+    width: 4vw;
+    position: absolute;
+    left: calc(50% - 2vw);
+    transform-Origin: bottom center;
+    height: calc(16vw);
+    display: flex;
+    justify-content: center;
+}
+
+.hourCont{
+    z-index: 1;
+}
+.minuteCont{
+    transform: rotate(45deg);
+    z-index: 2;
+}
+.secondCont{
+    transform: rotate(75deg);
+    z-index: 0;
+}
+
+.hour{
+    background-color: green;
+    width: 100%;
+    height: calc(100% - 6vw);
+    margin-top: 2vw;
+    border-radius: 2vw;
+}
+
+.minute{
+    background-color: red;
+    width: 50%;
+    height: calc(100% - 2vw);
+    border-radius: 1vw;
+
+}
+
+.second{
+    background-color: yellow;
+    width: 25%;
+    height: calc(100% - 2vw);
+    border-radius: 0.5vw;
+}
+
