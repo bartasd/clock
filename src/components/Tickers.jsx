@@ -1,13 +1,14 @@
 import style from "./Tickers.module.css";
-import { useContext  } from 'react';
+import { useContext, useEffect} from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 
 export default function Numbers(){
     const { time } = useContext(GlobalContext);
-    const H = ((+time[0]*60 + +time[1])/60)*30;
-    const M = (+time[1])*6;
-    const S = (+time[2])*6;
-    console.log(time);
+
+    let H = ((+time[0]*60 + +time[1])/60)*30;
+    let M = (+time[1])*6;
+    let S = (+time[2])*6;
+
 
     return (
         <>

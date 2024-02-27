@@ -1,22 +1,49 @@
 import style from "./Select.module.css";
-import { useState, useContext  } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 
 export default function Select(){
-    const [currentGMT, setGmt] = useState(0);
     const [currentTime, setTime] = useState([0,0,0]);
     const { updateTime } = useContext(GlobalContext);
 
     const handleGmt = (e) => {
         const GMT = e.target.value;
-        setGmt(GMT);
         fetch(`https://worldtimeapi.org/api/timezone/Etc/GMT${GMT>=0 ? "-"+GMT : "+"+ GMT*(-1)}`)
-          .then(response => response.json())
-          .then(data => setTime(data.datetime.slice(11,19).split(":")))
-          .catch(error => console.error(error));
-        updateTime(currentTime);
+            .then(response => response.json())
+            .then(data => {
+                const t = data.datetime.slice(11,19).split(":");
+                setTime(t);
+                updateTime(t);
+            })
+            .catch(error => console.error(error));
     };
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            updateTime(currentTime => {
+                let [hr, mi, se] = currentTime;
+                se = parseInt(se, 10) + 1;
+                if (se === 60) {
+                    se = 0;
+                    mi = parseInt(mi, 10) + 1;
+                    if (mi === 60) {
+                        mi = 0;
+                        hr = parseInt(hr, 10) + 1;
+                        if (hr === 24) {
+                            hr = 0;
+                        }
+                    }
+                }
+                hr = hr < 10 ? `0${hr}` : `${hr}`;
+                mi = mi < 10 ? `0${mi}` : `${mi}`;
+                se = se < 10 ? `0${se}` : `${se}`;
+                return [hr, mi, se];
+            });
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [currentTime]);
+    
+    
     const options = [];
 
     options.push(<option value="0"  selected disabled hidden>Select an option</option>)
@@ -29,14 +56,11 @@ export default function Select(){
     }
 
     return (
-        <>
-        <p>Selected GMT: {currentGMT}</p>
         <div className={style.cont}>
             <label for="gmt-select">Choose your GMT:</label>
             <select name="gmt" id="gmt-select" onChange={handleGmt}>
                 {options}
             </select>
         </div>
-        </>
     );
 }
