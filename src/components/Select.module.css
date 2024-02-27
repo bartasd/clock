@@ -1,0 +1,5 @@
+.cont{
+    margin-top: calc(1vw);
+    display: flex;
+    gap: 2vw;
+}

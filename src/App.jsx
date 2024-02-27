@@ -1,16 +1,17 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import style from "./App.module.css";
 import Clock from "./components/Clock";
+import Select from "./components/Select";
+import { ContextWrapper } from './context/GlobalContext';
 
 function App() {
   return (
-    <div className={style.cont}>
-      <Clock>
-
-      </Clock>
-    </div>
+    <ContextWrapper>
+      <div className={style.cont}>
+        <Clock>
+        </Clock>
+        <Select></Select>
+      </div>
+    </ContextWrapper>
   );
 }
 

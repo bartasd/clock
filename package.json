@@ -1,6 +1,6 @@
 {
   "homepage": "https://bartasd.github.io/clock/",
-  "name": "martex",
+  "name": "clock",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
