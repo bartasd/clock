@@ -1,5 +1,5 @@
 import style from "./Tickers.module.css";
-import { useContext, useEffect} from 'react';
+import { useContext} from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 
 export default function Numbers(){

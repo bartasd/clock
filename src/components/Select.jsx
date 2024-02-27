@@ -19,6 +19,11 @@ export default function Select(){
     };
 
     useEffect(() => {
+        handleGmt({ target: { value: 2 } });
+    }, []);
+    
+
+    useEffect(() => {
         const interval = setInterval(() => {
             updateTime(currentTime => {
                 let [hr, mi, se] = currentTime;
@@ -46,7 +51,7 @@ export default function Select(){
     
     const options = [];
 
-    options.push(<option value="0"  selected disabled hidden>Select an option</option>)
+    options.push(<option value={2}  selected disabled hidden>Select an option</option>)
 
     for (let i = -11; i < 12; i++) {
         if(i<0)
