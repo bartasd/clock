@@ -10,7 +10,7 @@ export default function Select(){
     const handleGmt = (e) => {
         const GMT = e.target.value;
         setGmt(GMT);
-        fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${GMT>=0 ? "-"+GMT : "+"+ GMT*(-1)}`)
+        fetch(`https://worldtimeapi.org/api/timezone/Etc/GMT${GMT>=0 ? "-"+GMT : "+"+ GMT*(-1)}`)
           .then(response => response.json())
           .then(data => setTime(data.datetime.slice(11,19).split(":")))
           .catch(error => console.error(error));
@@ -23,9 +23,9 @@ export default function Select(){
 
     for (let i = -11; i < 12; i++) {
         if(i<0)
-            options.push(<option key={i} value={i}>GMT{i}</option>);
+            options.push(<option value={i}>GMT{i}</option>);
         else
-            options.push(<option key={i} value={i}>GMT+{i}</option>);
+            options.push(<option value={i}>GMT+{i}</option>);
     }
 
     return (
